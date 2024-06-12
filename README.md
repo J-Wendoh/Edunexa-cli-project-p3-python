@@ -2,9 +2,6 @@
 
 Welcome to the EduNexa CLI project! This project aims to provide a command-line interface (CLI) for managing courses, institutions, and users within the EduNexa platform.
 
-Author:
-This application project was compiled by Joanne Wendoh as a school project.
-
 ## CLI Script
 
 ### `lib/cli.py`
@@ -63,10 +60,22 @@ To run the EduNexa CLI:
 4. Activate the virtual environment: `pipenv shell`
 5. Run the CLI script: `python lib/cli.py`
 
+## Screenshots
+
+[Add screenshots here if available]
+
 ## Resources
 
 - [SQLite Documentation](https://www.sqlite.org/docs.html): Official documentation for SQLite database.
 - [Python SQLite3 Documentation](https://docs.python.org/3/library/sqlite3.html): Official documentation for Python's SQLite3 module.
 - [Markdown Syntax Guide](https://www.markdownguide.org/basic-syntax/): Guide for writing Markdown syntax used in this README.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Author
+
+Joanne Wendoh
 
 Feel free to explore the codebase and contribute to further improvements of the EduNexa CLI project!
