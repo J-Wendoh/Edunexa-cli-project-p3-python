@@ -1,28 +1,45 @@
-
-
 import sqlite3
 
 DATABASE = 'edunexa.db'
 
 def connect_db():
-    return sqlite3.connect(DATABASE)
+    try:
+        return sqlite3.connect(DATABASE)
+    except sqlite3.Error as e:
+        print(f"Database connection failed: {e}")
+        return None
+
+def create_table(cursor, create_table_sql):
+    try:
+        cursor.execute(create_table_sql)
+    except sqlite3.Error as e:
+        print(f"Failed to create table: {e}")
 
 def init_db():
     conn = connect_db()
+    if conn is None:
+        return
+
     cursor = conn.cursor()
-    cursor.execute('''
+    
+    create_table(cursor, '''
     CREATE TABLE IF NOT EXISTS categories (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL UNIQUE
+        name TEXT NOT NULL UNIQUE,
+        description TEXT
     )
     ''')
-    cursor.execute('''
+    
+    create_table(cursor, '''
     CREATE TABLE IF NOT EXISTS institutions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL UNIQUE
+        name TEXT NOT NULL UNIQUE,
+        location TEXT,
+        address TEXT   
     )
     ''')
-    cursor.execute('''
+    
+    create_table(cursor, '''
     CREATE TABLE IF NOT EXISTS courses (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -34,13 +51,17 @@ def init_db():
         FOREIGN KEY (institution_id) REFERENCES institutions(id)
     )
     ''')
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS users (
+    
+    create_table(cursor, '''
+    CREATE TABLE IF NOT EXISTS contacts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT NOT NULL UNIQUE,
-        email TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL
+        institution_id INTEGER NOT NULL,
+        name TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        email TEXT NOT NULL,
+        FOREIGN KEY (institution_id) REFERENCES institutions(id)
     )
     ''')
+    
     conn.commit()
     conn.close()

@@ -1,5 +1,3 @@
-
-
 from helpers import (
     add_course,
     lookup_course,
@@ -9,6 +7,8 @@ from helpers import (
     sort_courses,
     view_institutions,
     view_courses_by_institution,
+    add_contact,
+    view_contacts_by_institution,
     why_choose_edunexa,
     help,
     exit_program
@@ -37,10 +37,14 @@ def main():
         elif choice == "8":
             view_courses_by_institution()
         elif choice == "9":
-            why_choose_edunexa()
+            add_contact()
         elif choice == "10":
-            help()
+            view_contacts_by_institution()
         elif choice == "11":
+            why_choose_edunexa()
+        elif choice == "12":
+            help()
+        elif choice == "13":
             exit_program()
         else:
             print("Invalid choice")
@@ -57,10 +61,12 @@ def menu():
     print("6) Sort courses in EduNexa")
     print("7) View Institutions EduNexa")
     print("8) View all courses offered by a particular institution")
-    print("9) Why choose an EduNexa course?")
-    print("10) HELP!")
+    print("9) Add contact person for an institution")
+    print("10) View contact persons of an institution")
+    print("11) Why choose an EduNexa course?")
+    print("12) HELP!")
     print(" ")
-    print("11) Quit EduNexa")
+    print("13) Quit EduNexa")
 
 if __name__ == "__main__":
     main()
