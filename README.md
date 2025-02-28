@@ -1,4 +1,4 @@
-# EduNexa CLI Project 
+# EduNexa CLI Project  
 
 Welcome to the EduNexa CLI project! This project aims to provide a command-line interface (CLI) for managing courses, institutions, and users within the EduNexa platform.
 
